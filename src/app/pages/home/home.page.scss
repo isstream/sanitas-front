@@ -1,0 +1,36 @@
+.custom-slide{
+    display: block;
+    padding-right: 5px;
+    padding-left: 5px;
+    img{
+        border-radius: 11px;
+        max-height: 250px;
+    }
+    .title{
+        font-size: 1vw;
+    }
+    @media screen and (max-width: 992px) {
+        .title{
+            font-size: 15px;
+        }
+    }
+}
+.slide-popular{
+    background-color: #020202;
+    padding-top: 24px;
+}
+.populate-header{
+    background-color: #020202;
+}
+.copyright{
+    text-align: center;
+}    
+
+
+cdk-virtual-scroll-viewport {
+    height: 100%;
+    width: 100%;
+    ::ng-deep .cdk-virtual-scroll-content-wrapper {
+        width: 100%;
+    }
+}

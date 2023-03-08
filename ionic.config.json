@@ -1,0 +1,7 @@
+{
+  "name": "Sanitas-App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

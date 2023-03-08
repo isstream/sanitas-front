@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sanitas App</ion-title>
+    <ion-buttons slot="end">
+      <ion-button shape="round" (click)="refresh();">
+        <ion-icon name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar
+      [(ngModel)]="filter.text"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="onRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+
+  <ion-list *ngIf="loading">
+    <ion-item *ngFor="let number of [0,1,2,3,4,5,6,7,8,9]">
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true" style="width: 100%; height: 56px;border-radius: 100%;"></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <ion-skeleton-text [animated]="true" style="height: 20px;"></ion-skeleton-text>
+        <ion-skeleton-text [animated]="true" style="height: 20px;"></ion-skeleton-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+    
+  <cdk-virtual-scroll-viewport class="ion-content-scroll-host ion-padding" itemSize="50" minBufferPx="1350" maxBufferPx="1350" >
+    <ion-list>
+      <ion-list-header>
+        Listado de fotos ({{ photos.length }})
+      </ion-list-header>
+      <ion-item *cdkVirtualFor="let photo of photos | customFilter: filter.text">
+        <ion-avatar slot="start">
+          <app-images [src]="photo.photo"></app-images>
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ photo.text }}</h2>
+          <p>#{{ photo.id }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </cdk-virtual-scroll-viewport>
+
+  
+</ion-content>
+<ion-footer color="white">
+  <ion-toolbar>
+    <p class="copyright">Creado con ❤️ por&nbsp;<a>Yovanny Parra</a></p>
+  </ion-toolbar>
+</ion-footer>
